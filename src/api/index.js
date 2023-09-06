@@ -1,0 +1,1 @@
+export { getFightData } from "./fightData";
