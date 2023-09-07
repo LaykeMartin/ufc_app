@@ -5,9 +5,9 @@ function App() {
     <div
       className="App"
       style={{
-        minWidth: "100vw",
+        minWidth: 300,
+        width: "100vw",
         minHeight: "100vh",
-        padding: 30,
         backgroundColor: "#5c0f22",
         display: "flex",
         flexDirection: "column",

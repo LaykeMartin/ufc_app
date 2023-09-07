@@ -7,7 +7,15 @@ export const FightCard = ({ details }) => {
     details;
 
   return (
-    <Card variant="outlined" sx={{ backgroundColor: "fff" }}>
+    <Card
+      variant="outlined"
+      sx={{
+        backgroundColor: "fff",
+        width: 600,
+        minWidth: 285,
+        maxWidth: "90vw",
+      }}
+    >
       <CardContent>
         <div
           style={{

@@ -21,13 +21,5 @@ export const Home = () => {
     }
   };
 
-  return (
-    <div
-      style={{
-        width: 600,
-      }}
-    >
-      {pageElements(data)}
-    </div>
-  );
+  return pageElements(data);
 };
