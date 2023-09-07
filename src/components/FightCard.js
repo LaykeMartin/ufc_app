@@ -92,7 +92,7 @@ export const FightCard = ({ details }) => {
           target="_blank"
           rel="noopener"
         >
-          Fightcenter
+          Fight center
         </Button>
       </CardContent>
     </Card>
