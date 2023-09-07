@@ -1,4 +1,3 @@
-import { useState, useEffect, useCallback } from "react";
 import { FightCard } from "../components/FightCard";
 import * as api from "../api/fightData";
 import _ from "lodash";
