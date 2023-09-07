@@ -2,33 +2,25 @@ import { useState, useEffect, useCallback } from "react";
 import { FightCard } from "../components/FightCard";
 import * as api from "../api/fightData";
 import _ from "lodash";
+import { useQuery } from "react-query";
 
 export const Home = () => {
-  const [data, setData] = useState([]);
+  const { data } = useQuery("data", api.getFightData, {
+    refetchInterval: 2000,
+  });
 
-  const updateData = useCallback(async () => {
-    try {
-      const { sports } = await api.getFightData();
+  const pageElements = (data) => {
+    if (data) {
+      const { sports } = data;
       const leagues = _.get(sports[0], "leagues", {});
       const events = _.get(leagues[0], "events", []);
-
-      if (events) {
-        setData(events);
-      }
-    } catch (e) {
-      console.error("could not update fight data");
+      return events.map((fighterDetails, index) => (
+        <div key={index} style={{ padding: 10 }}>
+          <FightCard details={fighterDetails} />
+        </div>
+      ));
     }
-  }, []);
-
-  useEffect(() => {
-    setInterval(updateData, 3000);
-  }, [updateData]);
-
-  const pageElements = data.map((fighterDetails, index) => (
-    <div key={index} style={{ padding: 10 }}>
-      <FightCard details={fighterDetails} />
-    </div>
-  ));
+  };
 
   return (
     <div
@@ -36,7 +28,7 @@ export const Home = () => {
         width: 600,
       }}
     >
-      {pageElements}
+      {pageElements(data)}
     </div>
   );
 };
